@@ -125,4 +125,16 @@ section {
     </div>
 </section>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* PRODUCTS PAGE NAVIGATION */
+.product-nav a {
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+    text-decoration: none;
+}
 
+.product-nav a:hover {
+    color: gold;
+}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
