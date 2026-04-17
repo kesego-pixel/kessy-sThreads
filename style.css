@@ -45,7 +45,7 @@ section {
 section article {
     display: inline-block;
     margin: 15px;
-    background: black;
+    background: white;
     padding: 15px;
     border-radius: 10px;
     width: 200px;
@@ -131,7 +131,7 @@ section {
     margin: 10px;
     text-decoration: none;
 }
-
+/*Hover effect*/
 .product-nav a:hover {
     color: gold;
 }
