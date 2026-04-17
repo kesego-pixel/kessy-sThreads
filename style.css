@@ -119,12 +119,11 @@ section {
         <h2>Products</h2>
 
         <article>
-            <img src="shirt.jpg">
+            <img src="images/shirt.jpg">
             <p>Shirt - P200</p>
         </article>
     </div>
 </section>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 /* PRODUCTS PAGE NAVIGATION */
 .product-nav a {
     color: black;
@@ -136,5 +135,22 @@ section {
 .product-nav a:hover {
     color: gold;
 }
+/* BODY FULL WIDTH */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* MAKE SECTIONS FULL WIDTH */
+section {
+    width: 100%;
+    padding: 40px;
+}
+
+/* CONTAINER STYLE */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
