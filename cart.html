@@ -2,36 +2,157 @@
 <html>
 <head>
   <title>Cart</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+    }
+
+    .controls button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .remove {
+      background: red;
+      color: white;
+      border: none;
+    }
+
+    .remove:hover {
+      opacity: 0.8;
+    }
+
+    .total {
+      font-size: 20px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .clear-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover {
+      background: gold;
+      color: black;
+    }
+  </style>
+
 </head>
 <body>
 
 <h1>Your Cart</h1>
 
 <div id="cart-items"></div>
-<h3 id="total"></h3>
+<div class="total" id="total"></div>
 
-<button onclick="clearCart()">Clear Cart</button>
+<button class="clear-btn" onclick="clearCart()">Clear Cart</button>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-let cartDiv = document.getElementById("cart-items");
-let total = 0;
+// Convert to grouped items (for quantity)
+let groupedCart = {};
 
 cart.forEach(item => {
-  let p = document.createElement("p");
-  p.textContent = item.name + " - P" + item.price;
-  cartDiv.appendChild(p);
-
-  total += item.price;
+  if (groupedCart[item.name]) {
+    groupedCart[item.name].qty++;
+  } else {
+    groupedCart[item.name] = { price: item.price, qty: 1 };
+  }
 });
 
-document.getElementById("total").textContent = "Total: P" + total;
+function renderCart() {
+  let cartDiv = document.getElementById("cart-items");
+  cartDiv.innerHTML = "";
+
+  let total = 0;
+
+  Object.keys(groupedCart).forEach(name => {
+    let item = groupedCart[name];
+
+    let div = document.createElement("div");
+    div.className = "cart-item";
+
+    div.innerHTML = `
+      <div>
+        <strong>${name}</strong><br>
+        P${item.price} x ${item.qty}
+      </div>
+
+      <div class="controls">
+        <button onclick="changeQty('${name}', -1)">-</button>
+        <button onclick="changeQty('${name}', 1)">+</button>
+        <button class="remove" onclick="removeItem('${name}')">Remove</button>
+      </div>
+    `;
+
+    cartDiv.appendChild(div);
+
+    total += item.price * item.qty;
+  });
+
+  document.getElementById("total").textContent = "Total: P" + total;
+}
+
+function changeQty(name, amount) {
+  groupedCart[name].qty += amount;
+
+  if (groupedCart[name].qty <= 0) {
+    delete groupedCart[name];
+  }
+
+  updateStorage();
+  renderCart();
+}
+
+function removeItem(name) {
+  delete groupedCart[name];
+  updateStorage();
+  renderCart();
+}
 
 function clearCart() {
   localStorage.removeItem("cart");
   location.reload();
 }
+
+function updateStorage() {
+  let newCart = [];
+
+  Object.keys(groupedCart).forEach(name => {
+    let item = groupedCart[name];
+    for (let i = 0; i < item.qty; i++) {
+      newCart.push({ name: name, price: item.price });
+    }
+  });
+
+  localStorage.setItem("cart", JSON.stringify(newCart));
+}
+
+renderCart();
 </script>
 
 </body>
