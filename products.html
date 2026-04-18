@@ -14,7 +14,13 @@
         <a href="products.html">Products</a>
         <a href="contact.html">Contact</a>
         <a href="feedback.html">Feedback</a>
+        <a href="cart.html">Cart</a>
     </nav>
+
+    <section class="product-hero">
+        <h2>Our Products</h2>
+        <p>Explore our stylish crochet clothing collection.</p>
+    </section>
 </header>
 
 <section>
@@ -25,22 +31,35 @@
         <a href="men.html">Men</a>
         <a href="women.html">Women</a>
         <a href="accessories.html">Accessories</a>
+        <a href="cart.html">Cart</a>
     </nav>
 </section>
 
-<section>
-    <article>
-        <img src="shirt.jpg" alt="Shirt" width="200">
+<section class="products">
+    <div class="product-card">
+    <img src="shirt.jpg" alt="Shirt" width="200">
         <p>Shirt - P200</p>
-    </article>
+    <button onclick="addToCart('Shirt', 200)">Add to Cart</button>
+ </div>
 
-    <article>
+    <div class="product-card">
         <img src="dress.jpg" alt="Dress" width="200">
         <p>Dress - P300</p>
-    </article>
-</div>
+        <button onclick="addToCart('Dress', 300)">Add to Cart</button>
+    </div>
 </section>
 
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({ name: name, price: price });
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert(name + " added to cart!");
+}
+</script>
 <footer>
     <p>© 2026 Kessy's Threads</p>
 </footer>
