@@ -13,6 +13,14 @@ body{
   font-family:'Poppins', sans-serif;
 }
 
+section{
+  padding:80px 10%;
+}
+
+nav a:hover{
+  color:#d4a373;
+}
+
 /* BODY */
 body {
     font-family: Arial, sans-serif;
