@@ -40,7 +40,13 @@
       z-index: 1000;
       text-align: center;
     }
-
+     <section class="hero">
+  <div class="overlay">
+    <h1>Kessy sThreads</h1>
+    <p>Modern Fashion For Every Style</p>
+    <a href="products.html" class="btn">Shop Now</a>
+  </div>
+</section>
     nav a {
       color: white;
       margin: 0 15px;
@@ -52,20 +58,19 @@
       color: gold;
     }
 
-    /* HERO SECTION */
-    .hero {
-  height: 100vh;
-  background: 
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url("FLYER.jpg") center/cover no-repeat;
+    .hero{
+  height:100vh;
+  background:url('images/flyer.jpg') center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding-top: 60px;
+.overlay{
+  background:rgba(0,0,0,0.5);
+  color:white;
+  text-align:center;
+  padding:40px;
 }
 
     .hero h1 {
