@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+h1,h2,h3{
+  font-family:'Playfair Display', serif;
+}
+
+body{
+  font-family:'Poppins', sans-serif;
+}
+
 /* BODY */
 body {
     font-family: Arial, sans-serif;
