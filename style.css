@@ -70,6 +70,15 @@ img {
     object-fit: cover;
 }
 
+/* FEATURED PRODUCTS GRID */
+.featured-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+}
+
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
