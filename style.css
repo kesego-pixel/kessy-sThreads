@@ -70,6 +70,18 @@ img {
     object-fit: cover;
 }
 
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .featured-products {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card img {
+        height: 300px;
+    }
+}
+
 /* BUTTON */
 button {
     padding: 10px 20px;
